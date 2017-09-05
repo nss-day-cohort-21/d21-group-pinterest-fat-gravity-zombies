@@ -16,12 +16,14 @@ nav {
 	background-color: $blue;
 }
 
-a.brand-logo {
-	margin-left: 2em;
+h1.logo {
+	display: inline !important;
+	text-shadow: 1px 1px 5px $gray;
 }
 
 input.search {
 	width: 30em !important;
+	padding: 1em !important;
 }
 
 
