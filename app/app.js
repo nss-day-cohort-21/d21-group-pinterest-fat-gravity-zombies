@@ -1,4 +1,4 @@
 "use strict";
 
-//starting
+//test
 const app = angular.module('Pinterest', ['ngRoute']);
