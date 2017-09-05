@@ -1,0 +1,70 @@
+{
+	"users": 
+	{
+		"uglyUser_1": {
+			"uid": "userID_1",
+			"name": "Bob Saget"
+		},
+		"uglyUser_2": {
+			"uid": "userID_2",
+			"name": "John Stamos"
+		},
+		"uglyUser_3": {
+			"uid": "userID_3",
+			"name": "Dave Coulier"
+		}
+	},
+	"pins" : {
+		"uglyPinID_1": {
+			"uid": "userID_1",
+			"boardid": "boardID_1",
+			"url": "https://i.imgur.com/6y2Cmxi.jpg",
+			"title": "Drawing of AT-AT."
+		},
+		"uglyPinID_2": {
+			"uid": "userID_1",
+			"boardid": "boardID_1",
+			"url": "https://i.imgur.com/lFAbHlC.jpg",
+			"title": "Boba Fett"
+		},
+		"uglyPinID_3": {
+			"uid": "userID_2",
+			"boardid": "boardID_2",
+			"url": "https://i.imgur.com/StV946k.jpg",
+			"title": "Want to eat"
+		},
+		"uglyPinID_4": {
+			"uid": "userID_2",
+			"boardid": "boardID_2",
+			"url": "https://i.imgur.com/DGZkFZo.jpg",
+			"title": "DO NOT WANT"
+		},
+		"uglyPinID_5": {
+			"uid": "userID_3",
+			"boardid": "boardID_3",
+			"url": "https://i.imgur.com/QJqSbIX.jpg",
+			"title": "COFFEEEEEEEEEEE"
+		},
+		"uglyPinID_6": {
+			"uid": "userID_3",
+			"boardid": "boardID_3",
+			"url": "https://i.imgur.com/EYOj4.jpg",
+			"title": "Yum"
+		}
+
+	},
+	"boards" : {
+		"boardID_1": {
+			"uid": "userID_1",
+			"title": "My Art"
+		},
+		"boardID_2": {
+			"uid": "userID_2",
+			"title": "Burgers"
+		},
+		"boardID_3": {
+			"uid": "userID_3",
+			"title": "Burgers"
+		}
+	}
+}
