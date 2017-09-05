@@ -4,21 +4,33 @@
 		<title>Fat Gravity Zombies</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- materialize -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+		<!-- local styles -->
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 	</head>
-	<body>
+	<body ng-app="Pinterest">
+		<div ng-include="'partials/navbar.html'"></div>
+		
+		<div class="container">
+			<div ng-view></div>
+		</div>
+		<footer>&copy; 2017 Pinterest</footer>
 
 
-
+		<!-- angular -->
 		<script type="text/javascript" src="./lib/node_modules/angular/angular.min.js"></script>
     	<script type="text/javascript" src="./lib/node_modules/angular-route/angular-route.min.js"></script>
+    	<!-- firebase -->
     	<script type="text/javascript" src="./lib/node_modules/firebase/firebase.js"></script>
+
+    	<!-- materialize -->
 		<script
   		src="https://code.jquery.com/jquery-3.2.1.min.js"
   		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   		crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+		<!-- local scripts compiled -->
 		<script type="text/javascript" src="dist/built.js"></script>
 	</body>
 	</html>
