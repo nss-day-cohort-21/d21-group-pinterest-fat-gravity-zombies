@@ -26,9 +26,10 @@ app.controller('userCtrl', function($scope, userFactory) {
 			password: $scope.userCreds.password
 		})
 		.then((userData) => {
-			$scope.login();
+			$scope.logIn();
 		})
 		.catch((error) => {
+			console.log("email/password values", $scope.userCreds.email, $scope.userCreds.password);
 			console.log("error from $scope.register()", error.code, error.message);
 		});
 

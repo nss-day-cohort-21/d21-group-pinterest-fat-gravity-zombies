@@ -10,6 +10,7 @@ app.factory('userFactory', function($q, $http) {
 		return currentUser;
 	};
 
+	//checks to see if user is authenticated, reolves true or false
 	let isAuthenticated = function () {
 		return $q((resolve, reject) => {
 			firebase.auth().onAuthStateChanged((user) => {
@@ -23,18 +24,22 @@ app.factory('userFactory', function($q, $http) {
 		});
 	};
 
-	let logIn = function(user) {
-		return firebase.auth().signInWithEmailAndPassword(user.email, user.password);
+	//logs user in with email, sent to login function in userCtrl
+	let logIn = function(userCreds) {
+		return firebase.auth().signInWithEmailAndPassword(userCreds.email, userCreds.password);
 	};
 
+	//logs user in with password, sent to login function in userCtrl
 	let logOut = function() {
 		return firebase.auth().signOut();
 	};
 
+	//registers user with email and password, sent to login function in userCtrl
 	let register = function(userCreds) {
 		return firebase.auth().createUserWithEmailAndPassword(userCreds.email, userCreds.password);
 	};
 
+	//sign in with google
 	let authWithProvider = function() {
 		return firebase.auth().signInWithPopup(googleProvider);
 	};
