@@ -31,7 +31,15 @@ app.factory('userFactory', function($q, $http) {
 		return firebase.auth().signOut();
 	};
 
-	return {getCurrentUser, isAuthenticated, logIn, logOut};
+	let register = function(userCreds) {
+		return firebase.auth().createUserWithEmailAndPassword(userCreds.email, userCreds.password);
+	};
+
+	let authWithProvider = function() {
+		return firebase.auth().signInWithPopup(googleProvider);
+	};
+
+	return {getCurrentUser, isAuthenticated, logIn, logOut, register, authWithProvider};
 
 });
 
