@@ -18,45 +18,29 @@ app.controller('userCtrl', function($scope, userFactory) {
 		};
 	};
 
+	let loginObjStorage = [];
 
-	let storage = [];
-	//register / logIn w/ Google
+	//register / logIn w/ Google  // checks if user email is already in the collection
 	$scope.logInGoogle = () => {
-		storage.length = 0;
+		loginObjStorage.length = 0;
 		userFactory.authWithProvider()
 		.then((userObj) => {
 			let newUserObj = createUserObj(userObj);
-			storage.push(newUserObj);
-			console.log("newUSerObj", newUserObj);
-			// console.log("storage", storage);
-
+			loginObjStorage.push(newUserObj);  //store newUserObj so it's available below
 			return newUserObj;
 		})
 		.then((newUserObj) => {
-			console.log("newUserObj email", newUserObj.email);
 			let fbEmail = userFactory.getUserObj(newUserObj.email);
-			// console.log("fbEmail", fbEmail);
 			return fbEmail;
 
 		})
 		.then((fbEmail) => {
 			let fromFB = Object.keys(fbEmail.data);
-			console.log("fbEmail--WORK?", fromFB);	
 			if(fromFB.length === 0) {
-				console.log("fromFB.length is 0");
-				userFactory.postUserObj(storage[0]);
+				userFactory.postUserObj(loginObjStorage[0]);
 
-			}  else  {
-				console.log("NO" );
 			}
 		})
-			// userFactory.getUserObj(newUserObj.email)
-			// .then((data) => {
-			// 	if (data === {}) {
-			// 		userFactory.postUserObj(newUserObj);
-			// 	}
-			// });
-
 		.catch((error) => {
 			console.log("error from $scope.logInGoogle", error.message);
 		});

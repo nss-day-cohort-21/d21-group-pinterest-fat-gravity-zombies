@@ -16,7 +16,7 @@ app.factory('userFactory', function($q, $http, FBCreds) {
 		return userEmailFromFB;
 	};
 
-	//checks to see if user is authenticated, reolves true or false
+	//checks to see if user is authenticated, resolves true or false
 	let isAuthenticated = function () {
 		return $q((resolve, reject) => {
 			firebase.auth().onAuthStateChanged((user) => {
@@ -30,24 +30,11 @@ app.factory('userFactory', function($q, $http, FBCreds) {
 		});
 	};
 
-	//checks if user information already exists in the FB collection
-	// let getUserObj = function(userEmail) {
-	// 	$http.get(`${FBCreds.databaseURL}/users.json?orderBy="email"&equalTo="${userEmail}"`)
-	// 	.then((data) => {
- //            console.log( "data", data.data );
- //            return data.data;
- //        }, (error) => {
- //            let errorCode = error.code;
- //            let errorMessage = error.message;
- //            console.log( "error", errorCode, errorMessage );
- //        });
-	// };
-
+	//checks to see if userEmail already exists in the user collection, called in userCtrl-> logInGoogle
 	let getUserObj = (userEmail) => {
 		return $q((resolve, reject) => {
 			$http.get(`${FBCreds.databaseURL}/users.json?orderBy="email"&equalTo="${userEmail}"`)
 			.then((data) => {
-				console.log("data", data);
 				resolve(data);
 			})
 			.catch((error) => {
@@ -58,6 +45,7 @@ app.factory('userFactory', function($q, $http, FBCreds) {
 
 	};
 
+	//if userEmail is not already in user collection, posts userObj, called as condition in userCtrl -> logInGoogle
 	let postUserObj = function(userObj) {
 		let newUserObj = JSON.stringify(userObj);
 		$http.post(`${FBCreds.databaseURL}/users.json`, userObj)
