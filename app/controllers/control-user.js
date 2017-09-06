@@ -8,14 +8,41 @@ app.controller('userCtrl', function($scope, userFactory) {
 		password: ''
 	};
 
-	//register / logIn w/ Google
+	//returns an object with user information to post to the FB user collection
+	let createUserObj = (loginObj) => {
+		return {
+			email: loginObj.user.email,
+			name: loginObj.user.displayName,
+			uid: loginObj.user.uid,
+			photoURL: loginObj.user.photoURL
+		};
+	};
+
+	let loginObjStorage = [];
+
+	//register / logIn w/ Google  // checks if user email is already in the collection
 	$scope.logInGoogle = () => {
+		loginObjStorage.length = 0;
 		userFactory.authWithProvider()
-		.then(() => {
-			console.log("log in with google successful");
+		.then((userObj) => {
+			let newUserObj = createUserObj(userObj);
+			loginObjStorage.push(newUserObj);  //store newUserObj so it's available below
+			return newUserObj;
+		})
+		.then((newUserObj) => {
+			let fbEmail = userFactory.getUserObj(newUserObj.email);
+			return fbEmail;
+
+		})
+		.then((fbEmail) => {
+			let fromFB = Object.keys(fbEmail.data);
+			if(fromFB.length === 0) {
+				userFactory.postUserObj(loginObjStorage[0]);
+
+			}
 		})
 		.catch((error) => {
-			console.log("error from $scope.logInGoogle", error.code, error.message);
+			console.log("error from $scope.logInGoogle", error.message);
 		});
 	};
 
@@ -37,12 +64,24 @@ app.controller('userCtrl', function($scope, userFactory) {
 
 	//log in using email/password input values, for now, prints success message ot the DOM
 	$scope.logIn = () => {
-		userFactory.logIn($scope.userCreds)
+        userFactory.logIn($scope.userCreds)
+        .then((userObj) => {
+            console.log("$scope.logIn successful", userObj);
+        })
+        .catch((error) => {
+            console.log("error from $scope.logIn", error.code, error.message);
+        });
+    };
+
+	//log out
+	$scope.logOut = () => {
+		userFactory.logOut()
 		.then(() => {
-			console.log("$scope.logIn successful");
+			let user = userFactory.getCurrentUser();
+			console.log("logOut successful", user);
 		})
 		.catch((error) => {
-			console.log("error from $scope.logIn", error.code, error.message);
+			console.log("logout error", error.message);
 		});
 	};
 
