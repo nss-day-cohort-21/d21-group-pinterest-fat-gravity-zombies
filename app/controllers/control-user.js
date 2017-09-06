@@ -11,8 +11,9 @@ app.controller('userCtrl', function($scope, userFactory) {
 	//register / logIn w/ Google
 	$scope.logInGoogle = () => {
 		userFactory.authWithProvider()
-		.then(() => {
-			console.log("log in with google successful");
+		.then((userObj) => {
+			// let user = userFactory.getCurrentUser();
+			console.log("log in google successful", userObj);
 		})
 		.catch((error) => {
 			console.log("error from $scope.logInGoogle", error.code, error.message);
@@ -38,11 +39,23 @@ app.controller('userCtrl', function($scope, userFactory) {
 	//log in using email/password input values, for now, prints success message ot the DOM
 	$scope.logIn = () => {
 		userFactory.logIn($scope.userCreds)
-		.then(() => {
-			console.log("$scope.logIn successful");
+		.then((userObj) => {
+			console.log("$scope.logIn successful", userObj);
 		})
 		.catch((error) => {
 			console.log("error from $scope.logIn", error.code, error.message);
+		});
+	};
+
+	//log out
+	$scope.logOut = () => {
+		userFactory.logOut()
+		.then(() => {
+			let user = userFactory.getCurrentUser();
+			console.log("logOut successful", user);
+		})
+		.catch((error) => {
+			console.log("logout error", error.message);
 		});
 	};
 

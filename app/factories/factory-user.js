@@ -24,6 +24,15 @@ app.factory('userFactory', function($q, $http) {
 		});
 	};
 
+	// let createUserInfo = (username) => {
+	// 	return new Promise((resolve, reject)=>{
+	// 		let userObject = {
+
+	// 		}
+	// 	})
+	// };
+
+
 	//logs user in with email, sent to login function in userCtrl
 	let logIn = function(userCreds) {
 		return firebase.auth().signInWithEmailAndPassword(userCreds.email, userCreds.password);
@@ -31,12 +40,13 @@ app.factory('userFactory', function($q, $http) {
 
 	//logs user in with password, sent to login function in userCtrl
 	let logOut = function() {
+		console.log("factoryLogOut firing");
 		return firebase.auth().signOut();
 	};
 
 	//registers user with email and password, sent to login function in userCtrl
 	let register = function(userCreds) {
-		return firebase.auth().createUserWithEmailAndPassword(userCreds.email, userCreds.password);
+		return firebase.auth().createUserWithEmailAndPassword(userCreds.displayName, userCreds.email, userCreds.password);
 	};
 
 	//sign in with google
