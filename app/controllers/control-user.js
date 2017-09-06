@@ -8,15 +8,57 @@ app.controller('userCtrl', function($scope, userFactory) {
 		password: ''
 	};
 
+	//returns an object with user information to post to the FB user collection
+	let createUserObj = (loginObj) => {
+		return {
+			email: loginObj.user.email,
+			name: loginObj.user.displayName,
+			uid: loginObj.user.uid,
+			photoURL: loginObj.user.photoURL
+		};
+	};
+
+
+	let storage = [];
 	//register / logIn w/ Google
 	$scope.logInGoogle = () => {
+		storage.length = 0;
 		userFactory.authWithProvider()
 		.then((userObj) => {
-			// let user = userFactory.getCurrentUser();
-			console.log("log in google successful", userObj);
+			let newUserObj = createUserObj(userObj);
+			storage.push(newUserObj);
+			console.log("newUSerObj", newUserObj);
+			// console.log("storage", storage);
+
+			return newUserObj;
 		})
+		.then((newUserObj) => {
+			console.log("newUserObj email", newUserObj.email);
+			let fbEmail = userFactory.getUserObj(newUserObj.email);
+			// console.log("fbEmail", fbEmail);
+			return fbEmail;
+
+		})
+		.then((fbEmail) => {
+			let fromFB = Object.keys(fbEmail.data);
+			console.log("fbEmail--WORK?", fromFB);	
+			if(fromFB.length === 0) {
+				console.log("fromFB.length is 0");
+				userFactory.postUserObj(storage[0]);
+
+			}  else  {
+				console.log("NO" );
+			}
+		})
+			// userFactory.getUserObj(newUserObj.email)
+			// .then((data) => {
+			// 	if (data === {}) {
+			// 		userFactory.postUserObj(newUserObj);
+			// 	}
+			// });
+
 		.catch((error) => {
-			console.log("error from $scope.logInGoogle", error.code, error.message);
+			console.log("error from $scope.logInGoogle", error.message);
 		});
 	};
 
@@ -38,14 +80,14 @@ app.controller('userCtrl', function($scope, userFactory) {
 
 	//log in using email/password input values, for now, prints success message ot the DOM
 	$scope.logIn = () => {
-		userFactory.logIn($scope.userCreds)
-		.then((userObj) => {
-			console.log("$scope.logIn successful", userObj);
-		})
-		.catch((error) => {
-			console.log("error from $scope.logIn", error.code, error.message);
-		});
-	};
+        userFactory.logIn($scope.userCreds)
+        .then((userObj) => {
+            console.log("$scope.logIn successful", userObj);
+        })
+        .catch((error) => {
+            console.log("error from $scope.logIn", error.code, error.message);
+        });
+    };
 
 	//log out
 	$scope.logOut = () => {
