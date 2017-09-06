@@ -29,6 +29,8 @@ app.factory("pinFactory", function($q, $http, FBCreds) {
 		return $q((resolve, reject) => {
 			$http.get(`${FBCreds.databaseURL}/pins.json?orderBy="uid"&equalTo="${user}"`)
 			.then((userPinsObj) => {
+				console.log( "user", user );
+				console.log( "userPinsObj", userPinsObj );
 				let userPins = userPinsObj.data;
 				Object.keys(userPins)
 				.forEach((key) => {
@@ -102,5 +104,5 @@ app.factory("pinFactory", function($q, $http, FBCreds) {
  			});
  		});
  	};
- 	return{getAllPins, getSinglePin, addPin, editPin, deletePin};
+ 	return{getAllPins, getSinglePin, addPin, editPin, deletePin, getUserPins};
 });
