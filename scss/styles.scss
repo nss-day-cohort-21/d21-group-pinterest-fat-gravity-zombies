@@ -1,0 +1,45 @@
+// font stacks
+
+// color scheme
+$purple: #96858F;
+$blue: #6D7993;
+$gray: #9099a2;
+$offWhite: #D5D5D5;
+
+// global styles
+body {
+	background-color: $offWhite;
+}
+
+//navbar styles
+nav {
+	background-color: $blue;
+}
+
+h1.logo {
+	display: inline !important;
+	text-shadow: 1px 1px 5px $gray;
+}
+
+input.search {
+	width: 30em !important;
+	padding: 1em !important;
+}
+
+
+
+
+
+
+
+
+
+
+// footer styles
+footer {
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	padding: 2em;
+}
