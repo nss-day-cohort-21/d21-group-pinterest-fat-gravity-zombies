@@ -15,8 +15,3 @@ app.config(($routeProvider) => {
 app.run(($location, FBCreds) => {
 	firebase.initializeApp(FBCreds);
 });
-
-//create userCtrl
-//create dummy text on register-login.html
-//create isAuthenticated
-//
