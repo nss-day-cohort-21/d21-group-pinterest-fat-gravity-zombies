@@ -64,7 +64,8 @@ app.factory("pinFactory", function($q, $http, FBCreds) {
  	const addPin = (obj) => {
 		let newObj = JSON.stringify(obj);
 		return $q((resolve, reject) => {
-			$http.post(`${FBCreds.databaseURL}/pins.json`)
+			console.log( "OBJ?", newObj );
+			$http.post(`${FBCreds.databaseURL}/pins.json`, newObj)
 			.then((data) => {
 				console.log( "data", data );
 				resolve(data);
