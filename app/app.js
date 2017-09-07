@@ -22,7 +22,12 @@ app.config(($routeProvider) => {
 		//the initial view will be a login screen
 		templateUrl: 'partials/register-login.html',
 		controller: 'userCtrl',
-		resolve: {isAuth}  
+		// resolve: {isAuth}  
+	})
+	.when('/home', {
+		templateUrl: 'partials/pins-view.html',
+		controller: 'pinsListCrtl',
+		resolve:{isAuth}
 	})
 	.otherwise('/');
 });
