@@ -1,6 +1,6 @@
 "use strict";
-app.controller('pinsListCtrl', function ($scope, pinFactory, boardFactory) {
-
+app.controller('pinsListCtrl', function ($scope, pinFactory, boardFactory, FilterFactory) {
+	$scope.searchText = FilterFactory;
 	$scope.pinsData = [];
 	$scope.boardsData = [];
 
