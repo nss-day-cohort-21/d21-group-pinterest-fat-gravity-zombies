@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('userCtrl', function($scope, userFactory) {
+app.controller('userCtrl', function($scope, userFactory, $location) {
 
 	//empty object to pull email and password input from ng-model
 	$scope.userCreds = {
@@ -25,6 +25,7 @@ app.controller('userCtrl', function($scope, userFactory) {
 		loginObjStorage.length = 0;
 		userFactory.authWithProvider()
 		.then((userObj) => {
+			$location.path('/home');
 			let newUserObj = createUserObj(userObj);
 			addPhotoAfterLogin(userObj);
 			loginObjStorage.push(newUserObj);  //store newUserObj so it's available below
@@ -41,6 +42,7 @@ app.controller('userCtrl', function($scope, userFactory) {
 				userFactory.postUserObj(loginObjStorage[0]);
 
 			}
+			console.log("login successful");
 		})
 		.catch((error) => {
 			console.log("error from $scope.logInGoogle", error.message);
