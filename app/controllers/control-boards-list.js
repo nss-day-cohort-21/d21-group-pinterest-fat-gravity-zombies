@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('BoardsCtrl', function($scope, boardFactory, userFactory, pinFactory, $location, $routeParams) {
+app.controller('BoardsCtrl', function($scope, boardFactory, userFactory, pinFactory, $location) {
 
 	$scope.myBoards = [];
 
@@ -9,13 +9,6 @@ app.controller('BoardsCtrl', function($scope, boardFactory, userFactory, pinFact
 		.then((data) => {
 			$scope.myBoards = data;
 			console.log("$scope.myBoards", $scope.myBoards);
-		});
-	};
-
-	let showSingleBoards = () => {
-		boardFactory.getSingleBoard($routeParams.id)
-		.then(board => {
-			$scope.boardTitle = board.title;
 		});
 	};
 
@@ -28,4 +21,17 @@ app.controller('BoardsCtrl', function($scope, boardFactory, userFactory, pinFact
 
 	showMyBoards();
 
+});
+
+app.controller('SingleBoardCtrl', function($scope, boardFactory, $routeParams) {
+
+	let showSingleBoard = () => {
+		boardFactory.getSingleBoard($routeParams.id)
+		.then(board => {
+			$scope.boardTitle = board.title;
+			console.log("$scope.boardTitle", $scope.boardTitle);
+		});
+	};
+
+	showSingleBoard();
 });

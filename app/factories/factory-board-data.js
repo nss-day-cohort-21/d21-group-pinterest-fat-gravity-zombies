@@ -40,8 +40,8 @@ app.factory("boardFactory", function($q, $http, FBCreds) {
 		return $q((resolve, reject) => {
 			$http.get(`${FBCreds.databaseURL}/boards/${boardID}.json`)
 			.then((boardObj) => {
-				console.log( "boardObj", boardObj );
-				resolve(boardObj);
+				console.log( "boardObj", boardObj.data );
+				resolve(boardObj.data);
 			})
 			.catch((error) => {
 				console.log( "error", error );

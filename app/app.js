@@ -36,9 +36,9 @@ app.config(($routeProvider) => {
 		controller: 'BoardsCtrl',
 		resolve:{isAuth}
 	})
-	.when('/board/:itemId', {
+	.when('/board/:id', {
 		templateUrl: 'partials/single-board-view.html',
-		controller: 'BoardsCtrl',
+		controller: 'SingleBoardCtrl',
 		resolve: {isAuth}
 	})
 	.when('/MyPinsView', {
