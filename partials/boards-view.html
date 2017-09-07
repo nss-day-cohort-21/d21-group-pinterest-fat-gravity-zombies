@@ -1,5 +1,5 @@
 <div class="jumbotron" ng-repeat="pin in pinsData | filter : searchText.search">>
   <h1>Many Boards View!</h1>
   <p>...</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+  <a class="btn btn-primary" role="button" ng-click="deleteBtn(pin.id)">Delete</a> </p>
 </div>
