@@ -2,12 +2,13 @@
 
 app.controller('pinsListCtrl', function ($scope, pinFactory) {
 
-	let pinsData = [];
+	$scope.pinsData = [];
 
 	const showAllPins = () => {
 		pinFactory.getAllPins()
 			.then((data) => {
-				console.log("data from showAllPins", data);
+				$scope.pinsData = data;
+				console.log("data from pinsData", $scope.pinsData);
 			});
 	};
 
