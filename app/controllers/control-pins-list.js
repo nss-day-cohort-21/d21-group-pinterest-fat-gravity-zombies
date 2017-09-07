@@ -1,5 +1,7 @@
 "use strict";
-app.controller('pinsListCtrl', function ($scope, pinFactory, boardFactory) {
+app.controller('pinsListCtrl', function ($scope, pinFactory, boardFactory, userFactory) {
+
+	let user = userFactory.getCurrentUser();
 
 	$scope.pinsData = [];
 	$scope.boardsData = [];
@@ -17,5 +19,16 @@ app.controller('pinsListCtrl', function ($scope, pinFactory, boardFactory) {
 			});
 	};
 
-	showAllPins();
+	const showMyPins = () => {
+		pinFactory.getUserPins(userFactory.getCurrentUser())
+			.then((data) => {
+				$scope.pinsData = data;
+			});
+		boardFactory.getAllBoards()
+			.then((data) => {
+				$scope.boardsData = data;
+			});
+	};
+
+	showMyPins();
 });
