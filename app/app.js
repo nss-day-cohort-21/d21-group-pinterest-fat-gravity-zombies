@@ -46,6 +46,11 @@ app.config(($routeProvider) => {
 		controller: 'myProfileCtrl',
 		resolve:{isAuth}
 	})
+	.when('/pin/:itemId/add', {
+		templateUrl: 'partials/save-edit-pin-form.html',
+		controller: 'addEditCtrl',
+		resolve:{isAuth}
+	})
 	.otherwise('/');
 });
 
