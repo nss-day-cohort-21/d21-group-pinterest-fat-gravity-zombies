@@ -1,6 +1,6 @@
 "use strict";
 app.controller('myPinsListCtrl', function ($scope, pinFactory, boardFactory, userFactory) {
-
+	$scope.searchText = FilterFactory;
 	let user = userFactory.getCurrentUser();
 
 	$scope.pinsData = [];
