@@ -1,6 +1,6 @@
 "use strict";
-app.controller('myPinsListCtrl', function ($scope, pinFactory, boardFactory, userFactory) {
-
+app.controller('myPinsListCtrl', function ($scope, pinFactory, boardFactory, userFactory, FilterFactory, $location) {
+	$scope.searchText = FilterFactory;
 	let user = userFactory.getCurrentUser();
 
 	$scope.pinsData = [];
@@ -19,5 +19,12 @@ app.controller('myPinsListCtrl', function ($scope, pinFactory, boardFactory, use
 	};
 
 	$scope.showMyPins();
+
+	$scope.deleteBtnPin = (pinId) => {
+		pinFactory.deletePin(pinId)
+			.then(() => {
+	            $scope.showMyPins();
+	        });
+		};
 
 });

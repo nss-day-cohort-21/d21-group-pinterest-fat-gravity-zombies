@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('BoardsCrtl', function($scope, boardFactory, userFactory) {
+app.controller('BoardsCrtl', function($scope, boardFactory, userFactory, pinFactory) {
 
 	$scope.myBoards = [];
 
@@ -11,6 +11,14 @@ app.controller('BoardsCrtl', function($scope, boardFactory, userFactory) {
 			console.log("$scope.myBoards", $scope.myBoards);
 		});
 	};
+
+	$scope.deleteBtn = (pinId) => {
+		pinFactory.deletePin(pinId);
+		$location.path('/MyPinsView');
+		$scope.$apply();
+
+	};
+
 	showMyBoards();
 
 });

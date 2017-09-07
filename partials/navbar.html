@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" ng-controller="NavCtrl">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -14,18 +14,19 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-      <ul class="nav navbar-nav" ng-controller="pinsListCtrl">
-        <li class="active"><a ng-href="#!/MyBoards">My Boards <span class="sr-only">(current)</span></a></li>
+      <ul class="nav navbar-nav">
+        <li><a ng-href="#!/MyBoards">My Boards<span class="sr-only">(current)</span></a></li>
         <li><a ng-href="#!/MyPinsView">My Pins<span class="sr-only">(current)</span></a></li>
 
       </ul>
 
       <form class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" ng-model="taco">
-          <!-- Needs link name not taco-->
+          <input type="text" placeholder="Search" ng-model="searchText.search">
         </div>
       </form>
+      <p>{{searchText.search}}</p>
+
         <div id="profile-image-anchor"></div>
       <ul class="nav navbar-nav navbar-right" ng-controller="userCtrl">
         <li><a href="#" ng-click="logOut()">LogOut</a></li>
