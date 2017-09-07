@@ -1,5 +1,15 @@
 "use strict";
+app.controller('pinsListCtrl', function ($scope, pinFactory) {
 
-app.controller('pinsListCrtl', function($scope, boardFactory, pinFactory) {
+	$scope.pinsData = [];
 
+	const showAllPins = () => {
+		pinFactory.getAllPins()
+			.then((data) => {
+				$scope.pinsData = data;
+				console.log("data from pinsData", $scope.pinsData);
+			});
+	};
+
+	showAllPins();
 });
