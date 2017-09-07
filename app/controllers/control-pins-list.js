@@ -6,7 +6,7 @@ app.controller('pinsListCtrl', function ($scope, pinFactory, boardFactory, userF
 	$scope.pinsData = [];
 	$scope.boardsData = [];
 
-	const showAllPins = () => {
+	$scope.showAllPins = () => {
 		pinFactory.getAllPins()
 			.then((data) => {
 				$scope.pinsData = data;
@@ -19,7 +19,8 @@ app.controller('pinsListCtrl', function ($scope, pinFactory, boardFactory, userF
 			});
 	};
 
-	const showMyPins = () => {
+	$scope.showMyPins = () => {
+		console.log("showMyPins firing");
 		pinFactory.getUserPins(userFactory.getCurrentUser())
 			.then((data) => {
 				$scope.pinsData = data;
@@ -30,5 +31,5 @@ app.controller('pinsListCtrl', function ($scope, pinFactory, boardFactory, userF
 			});
 	};
 
-	showMyPins();
+	$scope.showAllPins();
 });

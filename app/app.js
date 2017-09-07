@@ -25,7 +25,6 @@ app.config(($routeProvider) => {
 		// resolve: {isAuth}
 	})
 	.when('/home', {
-
 		//the first view when the user logs in
 		templateUrl: 'partials/pins-view.html',
 		controller: 'pinsListCtrl',
