@@ -3,7 +3,7 @@
 </div>
 
 <div class="row" ng-init="showMyPins()">
-  <div class="col-sm-6 col-md-4" ng-repeat="pin in pinsData">
+  <div class="col-sm-6 col-md-4" ng-repeat="pin in pinsData | filter : searchText.search">>
     <div class="thumbnail">
       <div class="caption">
         <h3><a href="{{pin.url}}" target="_blank"><strong>{{pin.title}}</strong></a></h3>
