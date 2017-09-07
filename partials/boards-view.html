@@ -1,6 +1,6 @@
 <div>
 	<h2>My Boards</h2>
 	<ul>
-		<li ng-repeat="board in myBoards">{{board.title}}</li>
+		<li ng-repeat="board in myBoards"><a href="#!/board/{{board.id}}">{{board.title}}</a></li>
 	</ul>
 </div>
