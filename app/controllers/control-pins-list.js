@@ -34,6 +34,30 @@ app.controller('pinsListCtrl', function ($scope, pinFactory, boardFactory, Filte
 
 	$scope.showAllPins();
 
+<<<<<<< HEAD
 
+=======
+	// 	let createUserObj = (loginObj) => {
+	// 	return {
+
+	// 	};
+	// };
+
+	//   	$scope.AddPintoFB = () =>{
+ 		
+
+ //    }
+
+ //        let AddPintoFB = () =>{
+ //        return {
+ //            uid: userFactory.getCurrentUser,
+ //            title: pin.title,
+ //            description: pin.description,
+ //            photoURL: boardsData[pin.boardid].title;
+
+ //        }
+
+ //    }
+>>>>>>> 590e969527a3ebd6e43befe86610336e56031a38
 
 });
