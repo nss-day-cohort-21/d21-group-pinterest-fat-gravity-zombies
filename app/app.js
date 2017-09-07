@@ -21,7 +21,7 @@ app.config(($routeProvider) => {
 	.when('/', {
 		//the initial view will be a login screen
 		templateUrl: 'partials/register-login.html',
-		controller: 'userCtrl',
+		controller: 'userCtrl'
 		// resolve: {isAuth}
 	})
 	.when('/home', {
@@ -33,8 +33,13 @@ app.config(($routeProvider) => {
 	})
 	.when('/MyBoards', {
 		templateUrl: 'partials/boards-view.html',
-		controller: 'BoardsCrtl',
+		controller: 'BoardsCtrl',
 		resolve:{isAuth}
+	})
+	.when('/board/:id', {
+		templateUrl: 'partials/single-board-view.html',
+		controller: 'SingleBoardCtrl',
+		resolve: {isAuth}
 	})
 	.when('/MyPinsView', {
 		templateUrl: 'partials/my-pins-view.html',
