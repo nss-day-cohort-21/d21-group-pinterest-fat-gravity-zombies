@@ -29,6 +29,11 @@ app.config(($routeProvider) => {
 		controller: 'pinsListCrtl',
 		resolve:{isAuth}
 	})
+	.when('/MyBoards', {
+		templateUrl: 'partials/boards-view.html',
+		controller: 'BoardsCrtl',
+		resolve:{isAuth}
+	})
 	.otherwise('/');
 });
 
