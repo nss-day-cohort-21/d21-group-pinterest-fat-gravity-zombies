@@ -33,4 +33,7 @@ app.controller('pinsListCtrl', function ($scope, pinFactory, boardFactory, Filte
 	};
 
 	$scope.showAllPins();
+
+
+
 });
