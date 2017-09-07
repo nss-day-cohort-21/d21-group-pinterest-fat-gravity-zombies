@@ -25,6 +25,7 @@ app.controller('userCtrl', function($scope, userFactory, $location) {
 		loginObjStorage.length = 0;
 		userFactory.authWithProvider()
 		.then((userObj) => {
+			$location.path('/home');
 			let newUserObj = createUserObj(userObj);
 			addPhotoAfterLogin(userObj);
 			loginObjStorage.push(newUserObj);  //store newUserObj so it's available below
@@ -41,6 +42,7 @@ app.controller('userCtrl', function($scope, userFactory, $location) {
 				userFactory.postUserObj(loginObjStorage[0]);
 
 			}
+			console.log("login successful");
 		})
 		.then(() => {
 			$location.path('/home');

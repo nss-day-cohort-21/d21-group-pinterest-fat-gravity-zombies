@@ -26,36 +26,6 @@ input.search {
 	padding: 1em !important;
 }
 
-
-//user login styles
-#login-section {
-	margin-top: 10em;
-}
-
-.login-google, .login-email {
-	text-align: center;
-}
-
-// footer styles
-footer {
-	position: fixed;
-	left: 0px;
-	bottom: 0px;
-	width: 100%;
-	padding: 2em;
-}
-
-
-#login-section{
-	background-color: #9099a2;
-	margin: 0;
-}
-
-#login-section button{
-	background-color: #96858F;
-	margin: 1vh;
-}
-
 #profile-image-anchor {
   width: 65px;
   height: 65px;
@@ -78,6 +48,42 @@ footer {
 
 #profile-image-anchor {
   margin-right: 3%; }
+
+
+//user login styles
+#login-section {
+	margin-top: 10em;
+}
+
+.login-google, .login-email {
+	text-align: center;
+}
+
+#login-section{
+	background-color: #9099a2;
+	margin: 0;
+}
+
+#login-section button{
+	background-color: #96858F;
+	margin: 1vh;
+}
+
+//pin list display styles
+.pin-cards {
+	margin: 3px;
+	border: 1px solid #000;
+}
+
+
+// footer styles
+footer {
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	padding: 2em;
+}
 
 
 
