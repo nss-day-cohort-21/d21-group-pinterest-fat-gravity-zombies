@@ -44,6 +44,10 @@ app.controller('userCtrl', function($scope, userFactory, $location) {
 			}
 			console.log("login successful");
 		})
+		.then(() => {
+			$location.path('/home');
+			$scope.$apply();
+		})
 		.catch((error) => {
 			console.log("error from $scope.logInGoogle", error.message);
 		});
