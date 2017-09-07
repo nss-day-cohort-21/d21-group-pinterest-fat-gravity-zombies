@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('BoardsCrtl', function($scope, boardFactory, userFactory, pinFactory) {
+app.controller('BoardsCtrl', function($scope, boardFactory, userFactory, pinFactory, $location, $routeParams) {
 
 	$scope.myBoards = [];
 
@@ -9,6 +9,13 @@ app.controller('BoardsCrtl', function($scope, boardFactory, userFactory, pinFact
 		.then((data) => {
 			$scope.myBoards = data;
 			console.log("$scope.myBoards", $scope.myBoards);
+		});
+	};
+
+	let showSingleBoards = () => {
+		boardFactory.getSingleBoard($routeParams.id)
+		.then(board => {
+			$scope.boardTitle = board.title;
 		});
 	};
 
