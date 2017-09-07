@@ -23,7 +23,9 @@ app.controller('BoardsCtrl', function($scope, boardFactory, userFactory, pinFact
 
 });
 
-app.controller('SingleBoardCtrl', function($scope, boardFactory, $routeParams) {
+app.controller('SingleBoardCtrl', function($scope, pinFactory, boardFactory, $routeParams) {
+
+	$scope.myPins = [];
 
 	let showSingleBoard = () => {
 		boardFactory.getSingleBoard($routeParams.id)
@@ -33,5 +35,16 @@ app.controller('SingleBoardCtrl', function($scope, boardFactory, $routeParams) {
 		});
 	};
 
+	let showPinsOnBoard = () => {
+		console.log("route params id", $routeParams.id);
+		pinFactory.getPinsFromBoard($routeParams.id)
+		.then(pins => {
+			$scope.myPins = pins;
+			console.log("scope my pins", $scope.myPins);
+		});
+	};
+
 	showSingleBoard();
+	showPinsOnBoard();
+
 });

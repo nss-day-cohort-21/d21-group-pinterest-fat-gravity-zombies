@@ -46,7 +46,28 @@ app.factory("pinFactory", function($q, $http, FBCreds) {
 			});
 		});
 	};
- 	
+
+	const getPinsFromBoard = (boardId) => {
+		let allPinsArray = [];
+		return $q((resolve, reject) => {
+			$http.get(`${FBCreds.databaseURL}/pins.json?orderBy="boardid"&equalTo="${boardId}"`)
+			.then((allPinObject) => {
+				let allPins = allPinObject.data;
+				console.log( "allPins", allPins );
+				Object.keys(allPins)
+				.forEach((key) => {
+					allPins[key].id = key;
+					allPinsArray.push(allPins[key]);
+				});
+				resolve(allPinsArray);
+			})
+			.catch((error) => {
+				console.log( "error", error );
+				reject(error);
+			});
+		});
+	};
+
  	const getSinglePin = (pinID) => {
  		return $q((resolve,reject) => {
  			$http.get(`${FBCreds.databaseURL}/pins/${pinID}.json`)
@@ -91,7 +112,7 @@ app.factory("pinFactory", function($q, $http, FBCreds) {
  			});
  		});
  	};
- 
+
  	const deletePin = (pinID) => {
  		return $q((resolve, reject) => {
  			$http.delete(`${FBCreds.databaseURL}/pins/${pinID}.json`)
@@ -105,5 +126,5 @@ app.factory("pinFactory", function($q, $http, FBCreds) {
  			});
  		});
  	};
- 	return{getAllPins, getSinglePin, addPin, editPin, deletePin, getUserPins};
+ 	return{getAllPins, getPinsFromBoard, getSinglePin, addPin, editPin, deletePin, getUserPins};
 });
