@@ -26,6 +26,7 @@ app.controller('userCtrl', function($scope, userFactory) {
 		userFactory.authWithProvider()
 		.then((userObj) => {
 			let newUserObj = createUserObj(userObj);
+			addPhotoAfterLogin(userObj);
 			loginObjStorage.push(newUserObj);  //store newUserObj so it's available below
 			return newUserObj;
 		})
@@ -77,6 +78,7 @@ app.controller('userCtrl', function($scope, userFactory) {
 	$scope.logOut = () => {
 		userFactory.logOut()
 		.then(() => {
+			clearUserPhoto();
 			let user = userFactory.getCurrentUser();
 			console.log("logOut successful", user);
 		})
@@ -86,3 +88,13 @@ app.controller('userCtrl', function($scope, userFactory) {
 	};
 
 });
+
+function addPhotoAfterLogin (userObj) {
+  console.log("userObj photo", userObj.photoURL);
+  $("#profile-image-anchor").append(
+    `<img src="${userObj.user.photoURL}" id="profile-img" class="flex-sm-fill">`
+  );
+}
+function clearUserPhoto (){
+  $("#profile-image-anchor").empty();
+}
