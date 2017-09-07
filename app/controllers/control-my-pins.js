@@ -20,11 +20,11 @@ app.controller('myPinsListCtrl', function ($scope, pinFactory, boardFactory, use
 
 	$scope.showMyPins();
 
-	$scope.deleteBtn = (pinId) => {
-		pinFactory.deletePin(pinId);
-		$location.path('/MyPinsView');
-		$scope.$apply();
-
-	};
+	$scope.deleteBtnPin = (pinId) => {
+		pinFactory.deletePin(pinId)
+			.then(() => {
+	            $scope.showMyPins();
+	        });
+		};
 
 });
