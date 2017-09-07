@@ -1,5 +1,6 @@
-<div class="jumbotron" ng-repeat="pin in pinsData | filter : searchText.search">>
-  <h1>Many Boards View!</h1>
-  <p>...</p>
-  <a class="btn btn-primary" role="button" ng-click="deleteBtn(pin.id)">Delete</a> </p>
+<div>
+	<h2>My Boards</h2>
+	<ul>
+		<li ng-repeat="board in myBoards"><a ng-href="#!/board/{{board.id}}">{{board.title}}</a></li>
+	</ul>
 </div>
