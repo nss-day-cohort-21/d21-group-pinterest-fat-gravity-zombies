@@ -10,8 +10,7 @@ app.controller('addEditCtrl', function($scope, userFactory, $location, pinFactor
 		url: "",
 		title: "",
 		board: "",
-		description: "",
-		uid: currrentUser
+		description: ""
 	};
 
 	const showEditPin = () => {
@@ -19,12 +18,13 @@ app.controller('addEditCtrl', function($scope, userFactory, $location, pinFactor
 		.then((data) => {
 			$scope.pin = data;
 			$scope.pin.id = $routeParams.itemId;
+			$scope.pin.uid = currrentUser;
 		});
 	};
 
 	$scope.submitPin = () => {
 		let obj = $scope.pin;
-		console.log( $scope.pin, currrentUser );
+		console.log( "HELLO", obj, currrentUser );
 		pinFactory.addPin(obj)
 		.then((data) => {
 			$location.path('/home');
