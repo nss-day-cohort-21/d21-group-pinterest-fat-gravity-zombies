@@ -32,6 +32,11 @@ app.config(($routeProvider) => {
 		resolve: {isAuth}
 
 	})
+	.when('/MyBoards', {
+		templateUrl: 'partials/boards-view.html',
+		controller: 'BoardsCrtl',
+		resolve:{isAuth}
+	})
 	.otherwise('/');
 });
 

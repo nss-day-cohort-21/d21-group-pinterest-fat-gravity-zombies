@@ -1,5 +1,4 @@
 "use strict";
-
 app.controller('pinsListCtrl', function ($scope, pinFactory) {
 
 	$scope.pinsData = [];
@@ -13,5 +12,4 @@ app.controller('pinsListCtrl', function ($scope, pinFactory) {
 	};
 
 	showAllPins();
-
 });
