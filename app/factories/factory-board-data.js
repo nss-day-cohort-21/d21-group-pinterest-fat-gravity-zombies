@@ -3,6 +3,18 @@ console.log( "factory-board-data.js" );
 
 app.factory("boardFactory", function($q, $http, FBCreds) {
 
+	const getAllBoards = () => {
+		return $q((resolve, reject) => {
+			$http.get(`${FBCreds.databaseURL}/boards.json`)
+			.then((allBoards) => {
+				resolve(allBoards.data);
+			})
+			.catch((error) => {
+				reject(error);
+			});
+		});
+	};
+
 	const getUserBoards = (user) => {
 		let userBoardsArray = [];
 		return $q((resolve, reject) => {
@@ -82,5 +94,5 @@ app.factory("boardFactory", function($q, $http, FBCreds) {
 			});
 		});
 	};
-	return{getUserBoards, getSingleBoard, addBoard, editBoard, deleteBoard};
+	return{getAllBoards, getUserBoards, getSingleBoard, addBoard, editBoard, deleteBoard};
 });
