@@ -120,11 +120,25 @@ body{
 }
 
 .pin-cards{
-	background-color: #588C7E;
+	background-color: #A86048;
+	min-height: 20vh;
 }
 .pin-cards:hover{
-	background-color: #F2A394;
+	background-color: #A8E2D0;
 	box-shadow: 5px 5px 15px 3px;
 }
+.pin-cards:hover p{
+	color:black;
+}
 
+.thumbnail{
+	background-color: #604848;
+	color: white;
+	font-size: 1.2em;
+}
 
+p{
+	color:#D8D8C0;
+	font-size: 1.2em;
+;
+}
