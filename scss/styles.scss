@@ -58,16 +58,29 @@ input.search {
 
 .login-google, .login-email {
 	text-align: center;
+	// background-color: rgba(0,0,0, 0)
 }
 
 #login-section{
-	background-color: #9099a2;
+	background-color: rgba(0,0,0, 0);
 	margin: 0;
 }
 
 #login-section button{
 	background-color: #96858F;
 	margin: 1vh;
+	margin-top: 2em;
+	padding: 1em;
+	width: 200px;
+	color: white;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+#login-section button:hover{
+	background-color: white;
+	color: #96858F;
+	
 }
 
 //pin list display styles
