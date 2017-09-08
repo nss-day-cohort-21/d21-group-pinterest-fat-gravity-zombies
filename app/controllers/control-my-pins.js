@@ -33,14 +33,6 @@ app.controller('myPinsListCtrl', function ($scope, pinFactory, boardFactory, use
 
 	$scope.showMyPins();
 
-	// $scope.createPin = () => {
-	// 	pinFactory.addPin($scope.pin)
-	// 		.then(() => {
-	// 			$location.url('/MyPinsView');
-	// 			$scope.showMyPins();
-	// 		});
-	// };
-
 	$scope.createPin = () => {
 		console.log($scope.board);
 		boardFactory.addBoard($scope.board)
