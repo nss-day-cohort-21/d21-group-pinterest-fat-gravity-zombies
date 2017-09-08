@@ -43,7 +43,11 @@ app.controller('myPinsListCtrl', function ($scope, pinFactory, boardFactory, use
 		})
 		.then((pinObj) => {
 			pinFactory.addPin(pinObj);
+		})
+		.then(() => {
+			$location.path('/MyPinsView');
 		});
+
 	};
 
 	$scope.deleteBtnPin = (pinId) => {
