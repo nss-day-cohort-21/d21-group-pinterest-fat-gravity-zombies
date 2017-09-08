@@ -1,6 +1,15 @@
-<div>
+<div class="cards-title">
 	<h2>My Boards</h2>
-	<ul>
-		<li ng-repeat="board in myBoards"><a ng-href="#!/board/{{board.id}}">{{board.title}}</a></li>
-	</ul>
+</div>
+<div class="row">
+	<div class="col-sm-6 col-md-4" ng-repeat="board in myBoards | filter : searchText.search">
+		<div class="thumbnail">
+	      <div class="caption">
+	        <h3><a href="{{pin.url}}" target="_blank"><strong>{{board.title}}</strong></a></h3>
+	        <!-- <p>
+	        <a class="btn btn-primary" role="button" ng-click="deleteBoard(pin.id)">Delete</a>
+	        </p> -->
+	      </div>
+    </div>
+	</div>
 </div>

@@ -34,6 +34,12 @@ app.controller('BoardsCtrl', function($scope, boardFactory, userFactory, pinFact
 
 	};
 
+	$scope.deleteBoard = (boardId) => {
+		boardFactory.deleteBoard(boardId);
+		$location.path('/MyBoards');
+		$scope.$apply();
+	};
+
 	showMyBoards();
 
 });
