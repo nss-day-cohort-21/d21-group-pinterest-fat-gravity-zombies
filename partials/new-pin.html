@@ -1,0 +1,14 @@
+<div>
+	<h2>Create a New Pin!</h2>
+	<form>
+		<label>Title</label>
+		<input type="text" class="form-control" value="My New Pin" ng-model="pin.title">
+		<label>Description</label>
+		<input type="text" class="form-control" value="A lovely new pin with something itneresting to me" ng-model="pin.description">
+		<label>Board:</label>
+		<input type="text" class="form-control"  value="My Board"ng-model="pin.board">
+		<label>URL:</label>
+		<input type="text" class="form-control"  value="http://google.com" ng-model="pin.url">
+		<a class="btn btn-default" role="button" ng-click="createPin()">Save</a>
+	</form>
+</div>

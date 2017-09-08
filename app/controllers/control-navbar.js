@@ -1,6 +1,11 @@
 "use strict";
 
-app.controller('NavCtrl', function ($scope, pinFactory, FilterFactory) {
+app.controller('NavCtrl', function ($scope, $location, pinFactory, FilterFactory) {
 	$scope.searchText = FilterFactory;
-	console.log("the search", $scope.searchText.search);
+
+	$scope.addPin = () => {
+		console.log("addPin firing");
+		$location.path('/new-pin');
+	};
+
 });

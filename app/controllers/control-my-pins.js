@@ -6,6 +6,14 @@ app.controller('myPinsListCtrl', function ($scope, pinFactory, boardFactory, use
 	$scope.pinsData = [];
 	$scope.boardsData = [];
 
+	$scope.pin = {
+		title: '',
+		description: '',
+		board: '',
+		url: '',
+		uid: user
+	};
+
 	$scope.showMyPins = () => {
 		console.log("showMyPins firing");
 		pinFactory.getUserPins(userFactory.getCurrentUser())
@@ -19,6 +27,14 @@ app.controller('myPinsListCtrl', function ($scope, pinFactory, boardFactory, use
 	};
 
 	$scope.showMyPins();
+
+	$scope.createPin = () => {
+		pinFactory.addPin($scope.pin)
+			.then(() => {
+				$location.url('/MyPinsView');
+				$scope.showMyPins();
+			});
+	};
 
 	$scope.deleteBtnPin = (pinId) => {
 		pinFactory.deletePin(pinId)
