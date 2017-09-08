@@ -31,6 +31,10 @@ app.config(($routeProvider) => {
 		resolve: {isAuth}
 
 	})
+	.when('/new-board', {
+		templateUrl: 'partials/new-board.html',
+		controller: 'BoardsCtrl'
+	})
 	.when('/new-pin', {
 		templateUrl: 'partials/new-pin.html',
 		controller: 'myPinsListCtrl',

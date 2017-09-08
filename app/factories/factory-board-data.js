@@ -54,7 +54,7 @@ app.factory("boardFactory", function($q, $http, FBCreds) {
 	const addBoard = (obj) => {
 		let newObj = JSON.stringify(obj);
 		return $q((resolve, reject) => {
-			$http.post(`${FBCreds.databaseURL}/boards.json`)
+			$http.post(`${FBCreds.databaseURL}/boards.json`, obj)
 			.then((data) => {
 				console.log( "data", data );
 				resolve(data);

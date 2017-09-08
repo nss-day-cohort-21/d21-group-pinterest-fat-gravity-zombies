@@ -3,12 +3,27 @@
 app.controller('BoardsCtrl', function($scope, boardFactory, userFactory, pinFactory, $location) {
 
 	$scope.myBoards = [];
+	let user = userFactory.getCurrentUser();
+
+	$scope.board = {
+		title: '',
+		description: '',
+		uid: user
+	};
 
 	let showMyBoards = () => {
 		boardFactory.getUserBoards(userFactory.getCurrentUser())
 		.then((data) => {
 			$scope.myBoards = data;
 			console.log("$scope.myBoards", $scope.myBoards);
+		});
+	};
+
+	$scope.createBoard = () => {
+		boardFactory.addBoard($scope.board)
+		.then(response => {
+			console.log("data from createBoard", response.data);
+			$location.url('/MyBoards');
 		});
 	};
 
