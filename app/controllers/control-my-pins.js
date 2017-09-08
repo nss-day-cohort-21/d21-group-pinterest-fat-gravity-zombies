@@ -9,8 +9,13 @@ app.controller('myPinsListCtrl', function ($scope, pinFactory, boardFactory, use
 	$scope.pin = {
 		title: '',
 		description: '',
-		board: '',
 		url: '',
+		uid: user,
+		boardId: ''
+	};
+
+	$scope.board = {
+		name: '',
 		uid: user
 	};
 
@@ -29,11 +34,16 @@ app.controller('myPinsListCtrl', function ($scope, pinFactory, boardFactory, use
 	$scope.showMyPins();
 
 	$scope.createPin = () => {
-		pinFactory.addPin($scope.pin)
-			.then(() => {
-				$location.url('/MyPinsView');
-				$scope.showMyPins();
-			});
+		console.log($scope.board);
+		boardFactory.addBoard($scope.board)
+		.then(uglyBoardId => {
+			$scope.pin.boardId = uglyBoardId.data.name;
+			console.log("uglyId", uglyBoardId);
+			return $scope.pin;
+		})
+		.then((pinObj) => {
+			pinFactory.addPin(pinObj);
+		});
 	};
 
 	$scope.deleteBtnPin = (pinId) => {
